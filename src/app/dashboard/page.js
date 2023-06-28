@@ -1,7 +1,9 @@
+import MapContainer from './client-components/MapContainer';
+
 export default function Dashboard() {
   return (
     <>
-      <p>Lorem Dashboard</p>
+      <MapContainer />
     </>
   );
 }
