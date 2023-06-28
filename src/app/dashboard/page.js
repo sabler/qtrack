@@ -1,3 +1,7 @@
-export default function DashboardLanding() {
-  return <p>Lorem Ipsum Dashboard</p>;
+export default function Dashboard() {
+  return (
+    <>
+      <p>Lorem</p>
+    </>
+  );
 }

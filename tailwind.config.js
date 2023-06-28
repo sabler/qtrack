@@ -6,6 +6,27 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['ui-sans-serif', 'system-ui'],
+      serif: ['ui-serif', 'Georgia'],
+      mono: ['ui-monospace', 'SFMono-Regular'],
+      display: ['Oswald'],
+      body: ['"Open Sans"'],
+      helvetica: ['Helvetica'],
+      sys: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Roboto',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica',
+        'Arial',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+      ],
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -15,4 +36,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
