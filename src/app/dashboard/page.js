@@ -1,7 +1,7 @@
 export default function Dashboard() {
   return (
     <>
-      <p>Lorem</p>
+      <p>Lorem Dashboard</p>
     </>
   );
 }
