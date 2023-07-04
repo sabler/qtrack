@@ -7,6 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 // DEV TOKEN
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAP
+
 export default function MapContainer() {
   const mapContainer = useRef(null);
   const map = useRef(null);
