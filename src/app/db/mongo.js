@@ -12,31 +12,34 @@ export async function getAllData() {
     const db = client.db("usgs");
     const collection = db.collection('earthquakes');
     const cursor = collection.find();
-    // const eqCollection = cursor;
+
 
     for await (const quake of cursor) {
-      //console.log(quake.location);
-
       let currentQuake = {
         timestamp: quake.timestamp,
         location: quake.location,
+        magnitude: quake.magnitude,
+        mapLocation: {
+          lat: quake.mapLocation.lat,
+          lng: quake.mapLocation.lng
+        },
         url: quake.url
       }
       listofQuakes.push(currentQuake);
 
     }
-
+    // console.log(listofQuakes);
     return listofQuakes;
 
+
   } finally {
-
     client.close();
-    //console.log(listofQuakes);
-    // return listofQuakes;
-
-
-
   }
 
+}
+
+
+export async function getSpecificData() {
+  // coming soon
 }
 
