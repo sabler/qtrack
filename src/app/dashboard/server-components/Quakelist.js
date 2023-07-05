@@ -14,7 +14,9 @@ export default async function Quakelist() {
 
   return (
     <menu>
-      {renderQuakes}
+      <div className="text-slate-500 divide-y divide-dashed divide-slate-800">
+        {renderQuakes}
+      </div>
     </menu>
   )
 }
