@@ -5,10 +5,10 @@ export const metadata = {
   description: 'Futzing with Mapbox',
 };
 
-export default function RootLayout({ children }) {
+export default function DashboardLayout({ children }) {
   return (
-    <html lang='en'>
-      <body className='bg-slate-800 font-sys'>{children}</body>
-    </html>
+
+    <section>{children}</section>
+
   );
 }
