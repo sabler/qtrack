@@ -1,9 +1,12 @@
-import Quakelist from './server-components/Quakelist';
+import QuakeTable from './server-components/QuakeTable';
+
 
 export default function Dashboard() {
   return (
+
     <>
-      <Quakelist />
+      <QuakeTable />
     </>
+
   );
 }

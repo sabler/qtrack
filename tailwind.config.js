@@ -13,6 +13,7 @@ module.exports = {
       display: ['Oswald'],
       body: ['"Open Sans"'],
       helvetica: ['Helvetica'],
+      roboto: ['Roboto'],
       sys: [
         '-apple-system',
         'BlinkMacSystemFont',
