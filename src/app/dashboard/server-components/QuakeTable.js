@@ -17,8 +17,8 @@ export default async function QuakeTable() {
   })
 
   return (
-    <div class="border m-8 rounded-lg overflow-hidden border-gray-700">
-      <table className='basis-2/3 m-8 border-gray-600 table-auto text-left'>
+    <div class="basis-2/3 border m-8 rounded-lg border-gray-700">
+      <table className='w-full border-gray-600 table-auto text-left'>
         <thead className="rounded-2xl bg-slate-700 font-roboto text-sm text-sky-200">
           <tr>
             <th className="px-8 py-2" scope="col">Magnitude</th>
