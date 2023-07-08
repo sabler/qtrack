@@ -1,19 +1,19 @@
-import { getAllData } from '../../db/mongo';
+import { getAllData } from '../../db/mongo.js';
 
-export default async function QuakeTable() {
-  const quakes = await getAllData();
-  const renderQuakes = quakes.map((quake) => {
-    return (
-      <tr className='border-b border-gray-700 last:border-none hover:bg-slate-900 cursor-pointer'>
-        <th scope='row' className='text-left px-8 py-4'>
-          0.0
-        </th>
-        <td className='px-8 py-4'>32 Miles From Nowhere</td>
-        <td className='px-8 py-4'>50.000 150.000</td>
-        <td className='px-8 py-4'>Smarch 32, 2023</td>
-      </tr>
-    );
-  });
+export default function QuakeTable() {
+  //const quakes = await getAllData();
+  // const renderQuakes = quakes.map((quake) => {
+  //   return (
+  //     <tr className='border-b border-gray-700 last:border-none hover:bg-slate-900 cursor-pointer'>
+  //       <th scope='row' className='text-left px-8 py-4'>
+  //         0.0
+  //       </th>
+  //       <td className='px-8 py-4'>32 Miles From Nowhere</td>
+  //       <td className='px-8 py-4'>50.000 150.000</td>
+  //       <td className='px-8 py-4'>Smarch 32, 2023</td>
+  //     </tr>
+  //   );
+  // });
 
   return (
     <div class='basis-2/3 border m-8 overflow-hidden rounded-lg border-gray-700'>
@@ -35,7 +35,7 @@ export default async function QuakeTable() {
           </tr>
         </thead>
 
-        <tbody className='text-sm text-sky-500'>{renderQuakes}</tbody>
+        <tbody className='text-sm text-sky-500'></tbody>
       </table>
     </div>
   );

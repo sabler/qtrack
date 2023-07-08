@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import QuakeTable from '../server-components/QuakeTable';
 
 // DEV TOKEN
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAP;
@@ -25,8 +26,11 @@ export default function MapContainer() {
   });
 
   return (
-    <div>
-      <div ref={mapContainer} className='map-container' />
-    </div>
+    <>
+      <QuakeTable />
+      <div>
+        <div ref={mapContainer} className='map-container' />
+      </div>
+    </>
   );
 }
