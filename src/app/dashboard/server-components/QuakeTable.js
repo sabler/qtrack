@@ -17,7 +17,7 @@ export default async function QuakeTable() {
   })
 
   return (
-    <div class="basis-2/3 border m-8 rounded-lg border-gray-700">
+    <div class="basis-2/3 border m-8 overflow-hidden rounded-lg border-gray-700">
       <table className='w-full border-gray-600 table-auto text-left'>
         <thead className="rounded-2xl bg-slate-700 font-roboto text-sm text-sky-200">
           <tr>
