@@ -1,5 +1,3 @@
-import { getAllData } from '../../db/mongo.js';
-
 export default function QuakeTable() {
   //const quakes = await getAllData();
   // const renderQuakes = quakes.map((quake) => {
