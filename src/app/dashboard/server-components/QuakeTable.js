@@ -4,7 +4,7 @@ export default async function QuakeTable() {
   const quakes = await getAllData();
   const renderQuakes = quakes.map((quake) => {
     return (
-      <tr className="border-b border-gray-700 last:border-none">
+      <tr className="border-b border-gray-700 last:border-none hover:bg-slate-900 cursor-pointer">
         <th scope="row" className="text-left px-8 py-4">0.0</th>
         <td className="px-8 py-4">32 Miles From Nowhere</td>
         <td className="px-8 py-4">50.000 150.000</td>
