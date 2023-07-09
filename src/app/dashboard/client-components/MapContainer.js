@@ -27,7 +27,7 @@ export default function MapContainer() {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/sablr/cljuoyyko006x01occbim6b2i',
+      style: 'mapbox://styles/sablr/cljuviyfy007r01q0ax2h7r9n',
       center: [lng, lat],
       zoom: zoomSetting,
     });
@@ -71,7 +71,7 @@ export default function MapContainer() {
 
     map.current.flyTo({
       ...target,
-      duration: 10000,
+      duration: 4000,
       center: [newLng, newLat],
     });
 
