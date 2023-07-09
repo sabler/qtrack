@@ -19,40 +19,64 @@ export default function MapContainer() {
   const map = useRef(null);
   const [lng, setLng] = useState(-98.55);
   const [lat, setLat] = useState(39.81);
-  const [zoomSetting, setZoomSetting] = useState(4);
+  const [zoomSetting, setZoomSetting] = useState(5);
   const [cMarker, setcMarker] = useState(null);
+  let isAtStart = true;
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
+      style: 'mapbox://styles/sablr/cljuoyyko006x01occbim6b2i',
       center: [lng, lat],
       zoom: zoomSetting,
     });
+
+    const nav = new mapboxgl.NavigationControl({
+      visualizePitch: true,
+    });
+    map.current.addControl(nav, 'bottom-left');
   });
 
-  const updateMap = (lng, lat) => {
+  const updateMap = (newLng, newLat) => {
+    const start = {
+      center: [80, 36],
+      zoom: 1,
+      pitch: 0,
+      bearing: 0,
+    };
+    const end = {
+      center: [8.11862, 46.58842],
+      zoom: 8,
+      bearing: 100,
+      pitch: 50,
+    };
+
+    const target = isAtStart ? end : start;
+    isAtStart = !isAtStart;
+
     if (cMarker) {
       cMarker.remove();
     }
 
-    setLng(lng);
-    setLat(lat);
     if (!map.current) return; // wait for map to initialize
 
     const marker = new mapboxgl.Marker({
       color: '#FFFFFF',
       draggable: false,
     })
-      .setLngLat([lng, lat])
+      .setLngLat([newLng, newLat])
       .addTo(map.current);
 
     map.current.flyTo({
-      center: [lng, lat],
+      ...target,
+      duration: 6000,
+      center: [newLng, newLat],
     });
 
     setcMarker(marker);
+    setLng(lng);
+    setLat(lat);
   };
 
   return (
