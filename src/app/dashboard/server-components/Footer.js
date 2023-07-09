@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <div className='flex items-center justify-center'>
+    <div className='flex items-center justify-center mt-14'>
       <footer className='text-sm text-sky-800 text-center'>
         &copy; 2023 rob sable
         <br />
