@@ -3,8 +3,19 @@ export default function QuakeTable({ qdata, updateMap }) {
     return new Date(stamp);
   };
 
-  const renderQuakes = qdata.map((quake) => {
+  const isItStriped = (index) => {
+    let calculation = index % 2 == 0;
+    console.log(calculation);
+
+    return calculation;
+  };
+
+  const renderQuakes = qdata.map((quake, idx) => {
+    let stripeState = isItStriped(idx);
+    let stripeClass = stripeState ? 'bg-zinc-800 ' : '';
+
     let date = renderDate(quake.properties.updated).toUTCString();
+
     return (
       <tr
         onClick={() =>
@@ -14,24 +25,24 @@ export default function QuakeTable({ qdata, updateMap }) {
           )
         }
         key={quake.id}
-        className='border-b border-gray-700 last:border-none hover:bg-slate-900 cursor-pointer'
+        className={`${stripeClass}cursor-pointer hover:bg-sky-500 hover:text-zinc-800`}
       >
-        <th scope='row' className='text-left px-8 py-4'>
+        <th scope='row' className='text-left px-8 py-2'>
           {quake.properties.mag}
         </th>
-        <td className='px-8 py-4'>{quake.properties.place}</td>
-        <td className='px-8 py-4'>
+        <td className='px-8 py-2'>{quake.properties.place}</td>
+        <td className='px-8 py-2'>
           {quake.geometry.coordinates[0]} {quake.geometry.coordinates[1]}
         </td>
-        <td className='px-8 py-4'>{date}</td>
+        <td className='px-8 py-2'>{date}</td>
       </tr>
     );
   });
   console.log(qdata);
   return (
-    <div className='basis-2/3 border m-8 overflow-hidden rounded-lg border-gray-700'>
-      <table className='w-full border-gray-600 table-auto text-left'>
-        <thead className='rounded-2xl bg-slate-700 font-roboto text-sm text-sky-200'>
+    <div className='basis-2/3 m-8 h-96 overflow-y-auto'>
+      <table className='w-full h-96 border-gray-600 table-auto text-left'>
+        <thead className='rounded-t-lg bg-slate-700 sticky top-0 uppercase text-xs text-sky-200'>
           <tr>
             <th className='px-8 py-2' scope='col'>
               Magnitude
@@ -48,7 +59,9 @@ export default function QuakeTable({ qdata, updateMap }) {
           </tr>
         </thead>
 
-        <tbody className='text-sm text-sky-500'>{renderQuakes}</tbody>
+        <tbody className='h-96 overflow-y-auto text-sm text-sky-500'>
+          {renderQuakes}
+        </tbody>
       </table>
     </div>
   );

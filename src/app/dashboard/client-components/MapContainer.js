@@ -19,7 +19,7 @@ export default function MapContainer() {
   const map = useRef(null);
   const [lng, setLng] = useState(-98.55);
   const [lat, setLat] = useState(39.81);
-  const [zoomSetting, setZoomSetting] = useState(5);
+  const [zoomSetting, setZoomSetting] = useState(1);
   const [cMarker, setcMarker] = useState(null);
   let isAtStart = true;
 
@@ -39,6 +39,7 @@ export default function MapContainer() {
   });
 
   // For the sake of sanity, do something to clear this out or make it shorter.
+  // Seperate out into a config file?
   const updateMap = (newLng, newLat) => {
     const start = {
       center: [lng, lat],
