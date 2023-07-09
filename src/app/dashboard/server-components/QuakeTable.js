@@ -1,19 +1,9 @@
+import { renderDate, isItStriped } from '../utils/utils';
+
 export default function QuakeTable({ qdata, updateMap }) {
-  const renderDate = (stamp) => {
-    return new Date(stamp);
-  };
-
-  const isItStriped = (index) => {
-    let calculation = index % 2 == 0;
-    console.log(calculation);
-
-    return calculation;
-  };
-
   const renderQuakes = qdata.map((quake, idx) => {
     let stripeState = isItStriped(idx);
     let stripeClass = stripeState ? 'bg-zinc-800 ' : '';
-
     let date = renderDate(quake.properties.updated).toUTCString();
 
     return (
