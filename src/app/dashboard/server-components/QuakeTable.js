@@ -28,7 +28,6 @@ export default function QuakeTable({ qdata, updateMap }) {
       </tr>
     );
   });
-  console.log(qdata);
   return (
     <div className='basis-2/3 h-96 overflow-y-auto'>
       <table className='w-full h-96 border-gray-600 table-auto text-left'>
