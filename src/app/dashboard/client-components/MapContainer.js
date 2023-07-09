@@ -20,6 +20,7 @@ export default function MapContainer() {
   const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
   const [zoom, setZoom] = useState(9);
+  const [cMarker, setcMarker] = useState(null);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -32,14 +33,26 @@ export default function MapContainer() {
   });
 
   const updateMap = (lng, lat) => {
-    console.log('The map should update');
-    console.log(lng, lat);
+    if (cMarker) {
+      cMarker.remove();
+    }
     setLng(lng);
     setLat(lat);
     if (!map.current) return; // wait for map to initialize
+
+    const marker = new mapboxgl.Marker({
+      color: '#FFFFFF',
+      draggable: false,
+    })
+      .setLngLat([lng, lat])
+      .addTo(map.current);
+
     map.current.flyTo({
       center: [lng, lat],
     });
+
+    setcMarker(marker);
+    console.log(cMarker);
   };
 
   return (
