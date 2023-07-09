@@ -38,6 +38,7 @@ export default function MapContainer() {
     map.current.addControl(nav, 'bottom-left');
   });
 
+  // For the sake of sanity, do something to clear this out or make it shorter.
   const updateMap = (newLng, newLat) => {
     const start = {
       center: [80, 36],
@@ -47,7 +48,7 @@ export default function MapContainer() {
     };
     const end = {
       center: [8.11862, 46.58842],
-      zoom: 8,
+      zoom: 6,
       bearing: 100,
       pitch: 50,
     };
