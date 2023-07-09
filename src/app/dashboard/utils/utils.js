@@ -4,7 +4,5 @@ export const renderDate = (stamp) => {
 
 export const isItStriped = (index) => {
   let calculation = index % 2 == 0;
-  console.log(calculation);
-
   return calculation;
 };
