@@ -7,13 +7,13 @@ export default function Footer() {
         &copy; 2023 rob sable
         <br />
         made with ❤️ on planet earth <br />
-        data provided by the{' '}
+        data courtesy of the{' '}
         <Link
           className='hover:text-sky-500'
           target='_blank'
           href='https://www.usgs.gov/programs/earthquake-hazards/earthquakes'
         >
-          united states geological survey
+          u.s. geological survey
         </Link>
       </footer>
     </div>
