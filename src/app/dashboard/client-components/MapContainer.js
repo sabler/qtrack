@@ -41,15 +41,15 @@ export default function MapContainer() {
   // For the sake of sanity, do something to clear this out or make it shorter.
   const updateMap = (newLng, newLat) => {
     const start = {
-      center: [80, 36],
+      center: [lng, lat],
       zoom: 1,
       pitch: 0,
       bearing: 0,
     };
     const end = {
-      center: [8.11862, 46.58842],
-      zoom: 6,
-      bearing: 100,
+      center: [newLng, newLat],
+      zoom: 7,
+      bearing: 0,
       pitch: 50,
     };
 
@@ -71,7 +71,7 @@ export default function MapContainer() {
 
     map.current.flyTo({
       ...target,
-      duration: 6000,
+      duration: 10000,
       center: [newLng, newLat],
     });
 
