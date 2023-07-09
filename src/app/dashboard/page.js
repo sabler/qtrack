@@ -5,7 +5,7 @@ import QuakeTable from './server-components/QuakeTable';
 export default function Dashboard() {
   return (
     <main>
-      <div className='container my-16 max-w-full'>
+      <div className='container font-sys max-w-full'>
         <MapContainer />
       </div>
       <Footer />
