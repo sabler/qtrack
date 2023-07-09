@@ -59,7 +59,7 @@ export default function QuakeTable({ qdata, updateMap }) {
           </tr>
         </thead>
 
-        <tbody className='h-96 overflow-y-auto text-sm text-sky-500'>
+        <tbody className='overflow-y-auto text-sm text-sky-500'>
           {renderQuakes}
         </tbody>
       </table>
