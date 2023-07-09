@@ -17,9 +17,9 @@ export default function MapContainer() {
 
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-70.9);
-  const [lat, setLat] = useState(42.35);
-  const [zoom, setZoom] = useState(9);
+  const [lng, setLng] = useState(-98.55);
+  const [lat, setLat] = useState(39.81);
+  const [zoomSetting, setZoomSetting] = useState(4);
   const [cMarker, setcMarker] = useState(null);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function MapContainer() {
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [lng, lat],
-      zoom: zoom,
+      zoom: zoomSetting,
     });
   });
 
@@ -36,6 +36,7 @@ export default function MapContainer() {
     if (cMarker) {
       cMarker.remove();
     }
+
     setLng(lng);
     setLat(lat);
     if (!map.current) return; // wait for map to initialize
@@ -52,7 +53,6 @@ export default function MapContainer() {
     });
 
     setcMarker(marker);
-    console.log(cMarker);
   };
 
   return (
