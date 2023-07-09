@@ -32,7 +32,7 @@ export default function QuakeTable({ qdata, updateMap }) {
         </th>
         <td className='px-8 py-2'>{quake.properties.place}</td>
         <td className='px-8 py-2'>
-          {quake.geometry.coordinates[0]} {quake.geometry.coordinates[1]}
+          {quake.geometry.coordinates[0]}, {quake.geometry.coordinates[1]}
         </td>
         <td className='px-8 py-2'>{date}</td>
       </tr>
