@@ -6,3 +6,7 @@ export const isItStriped = (index) => {
   let calculation = index % 2 == 0;
   return calculation;
 };
+
+export const updateMap = () => {
+  //
+};
