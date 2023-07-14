@@ -11,9 +11,9 @@ import useUSGS from '@/app/hooks/useUSGS';
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAP;
 
 export default function MapContainer() {
-  const { quakes, isLoading, isError } = useUSGS();
+  // const { quakes, isLoading, isError } = useUSGS();
 
-  console.log(isLoading);
+  // console.log(isLoading);
 
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -27,7 +27,7 @@ export default function MapContainer() {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/sablr/cljuoyyko006x01occbim6b2i',
+      style: 'mapbox://styles/sablr/clk303ytw005201pqgq2faum0',
       center: [lng, lat],
       zoom: zoomSetting,
     });
