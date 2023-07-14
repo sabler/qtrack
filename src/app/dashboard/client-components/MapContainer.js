@@ -85,9 +85,9 @@ export default function MapContainer() {
     <>
       <div>
         <div ref={mapContainer} className='map-container' />
-        {!isLoading && (
+        {/* {!isLoading && (
           <QuakeTable qdata={quakes.features} updateMap={updateMap} />
-        )}
+        )} */}
       </div>
     </>
   );
