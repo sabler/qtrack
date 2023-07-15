@@ -48,7 +48,7 @@ export default function MapContainer() {
     };
     const end = {
       center: [newLng, newLat],
-      zoom: 7,
+      zoom: 9,
       bearing: 0,
       pitch: 50,
     };
