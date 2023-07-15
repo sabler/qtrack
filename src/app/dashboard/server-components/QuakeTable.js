@@ -40,7 +40,7 @@ export default function QuakeTable({ updateMap }) {
   });
 
   return (
-    <div className='absolute bottom-[40px] left-[10px] min-h-96 max-h-96 w-max backdrop-blur-sm bg-slate-200/25 overflow-y-auto rounded'>
+    <div className='absolute bottom-[40px] left-[10px] h-[30vh] w-max backdrop-blur-sm bg-slate-200/25 overflow-y-auto rounded'>
       <table>
         <thead className='sticky top-0 bg-white text-xs'>
           <tr>
