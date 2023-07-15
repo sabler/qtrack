@@ -7,6 +7,10 @@ export const isItStriped = (index) => {
   return calculation;
 };
 
+export const friendlyCoords = (point) => {
+  return Number.parseFloat(point).toFixed(3);
+};
+
 export const updateMap = () => {
   //
 };

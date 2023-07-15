@@ -19,7 +19,7 @@ export default function MapContainer() {
   const map = useRef(null);
   const [lng, setLng] = useState(-98.55);
   const [lat, setLat] = useState(39.81);
-  const [zoomSetting, setZoomSetting] = useState(1);
+  const [zoomSetting, setZoomSetting] = useState(3);
   const [cMarker, setcMarker] = useState(null);
   let isAtStart = true;
 
@@ -35,7 +35,7 @@ export default function MapContainer() {
     const nav = new mapboxgl.NavigationControl({
       visualizePitch: true,
     });
-    map.current.addControl(nav, 'bottom-left');
+    map.current.addControl(nav, 'top-right');
   });
 
   // For the sake of sanity, do something to clear this out or make it shorter.
