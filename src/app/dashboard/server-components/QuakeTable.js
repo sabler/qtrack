@@ -1,11 +1,22 @@
-import { renderDate, isItStriped } from '../utils/utils';
+import { renderDate, friendlyNumbers, isItStriped } from '../utils/utils';
 
-export default function QuakeTable({ qdata, updateMap }) {
-  const renderQuakes = qdata.map((quake, idx) => {
-    let stripeState = isItStriped(idx);
-    let stripeClass = stripeState ? 'bg-zinc-800 ' : '';
+import useUSGS from '@/app/hooks/useUSGS';
+
+export default function QuakeTable({ updateMap }) {
+  const { quakes, isLoading, isError } = useUSGS();
+
+  let quakeData = [];
+
+  if (isLoading === false) {
+    console.log(quakes);
+    quakeData = quakes.features;
+  }
+
+  const renderQuakes = quakeData.map((quake) => {
     let date = renderDate(quake.properties.updated).toUTCString();
-
+    let friendlyLong = friendlyNumbers(quake.geometry.coordinates[0]);
+    let friendlyLat = friendlyNumbers(quake.geometry.coordinates[1]);
+    let friendlyMag = friendlyNumbers(quake.properties.mag, 2);
     return (
       <tr
         onClick={() =>
@@ -15,42 +26,39 @@ export default function QuakeTable({ qdata, updateMap }) {
           )
         }
         key={quake.id}
-        className={`${stripeClass}cursor-pointer hover:bg-sky-500 hover:text-zinc-800`}
+        scope='row'
+        className={`hover:bg-cyan-100 cursor-pointer`}
       >
-        <th scope='row' className='text-left px-8'>
-          {quake.properties.mag}
-        </th>
-        <td className='px-8'>{quake.properties.place}</td>
-        <td className='px-8'>
-          {quake.geometry.coordinates[0]}, {quake.geometry.coordinates[1]}
+        <th className='text-left py-2 px-8'>{friendlyMag}</th>
+        <td className='text-left py-2 px-8'>{quake.properties.place}</td>
+        <td className='text-left py-2 px-8'>
+          {friendlyLong}, {friendlyLat}
         </td>
-        <td className='px-8'>{date}</td>
+        <td className='text-right py-2 px-8'>{date}</td>
       </tr>
     );
   });
+
   return (
-    <div className='basis-2/3 h-96 overflow-y-auto'>
-      <table className='w-full h-96 border-gray-600 table-auto text-left'>
-        <thead className='rounded-t-lg bg-slate-700 sticky top-0 uppercase text-xs text-sky-200'>
+    <div className='absolute bottom-[40px] left-[10px] min-h-96 max-h-96 w-max backdrop-blur-sm bg-slate-200/25 overflow-y-auto rounded'>
+      <table>
+        <thead className='sticky top-0 bg-white text-xs'>
           <tr>
-            <th className='px-8 py-2' scope='col'>
+            <th className='text-left px-8 p-2' scope='col'>
               Magnitude
             </th>
-            <th className='px-8 py-2' scope='col'>
+            <th className='text-left px-8 p-2' scope='col'>
               General Location
             </th>
-            <th className='px-8 py-2' scope='col'>
+            <th className='text-left px-8 p-2' scope='col'>
               Precise Location
             </th>
-            <th className='px-8 py-2' scope='col'>
+            <th className='text-center px-8 p-2' scope='col'>
               Approx. Time of Event
             </th>
           </tr>
         </thead>
-
-        <tbody className='overflow-y-auto text-sm text-sky-500'>
-          {renderQuakes}
-        </tbody>
+        <tbody className='text-xs'>{!isLoading && renderQuakes}</tbody>
       </table>
     </div>
   );

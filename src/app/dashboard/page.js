@@ -1,14 +1,12 @@
 import MapContainer from './client-components/MapContainer';
-import Footer from './server-components/Footer';
-import QuakeTable from './server-components/QuakeTable';
+import Masthead from './server-components/Masthead';
 
 export default function Dashboard() {
   return (
-    <main>
-      <div className='container font-sys max-w-full'>
-        <MapContainer />
-      </div>
-      <Footer />
-    </main>
+    <div className='container relative font-sys max-w-full'>
+      {/* Some kind of context will go here. Maybe. */}
+      <MapContainer />
+      <Masthead />
+    </div>
   );
 }

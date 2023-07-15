@@ -5,21 +5,20 @@ import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import QuakeTable from '../server-components/QuakeTable';
-import useUSGS from '@/app/hooks/useUSGS';
 
 // DEV TOKEN
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAP;
 
 export default function MapContainer() {
-  const { quakes, isLoading, isError } = useUSGS();
+  // const { quakes, isLoading, isError } = useUSGS();
 
-  console.log(isLoading);
+  // console.log(isLoading);
 
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-98.55);
   const [lat, setLat] = useState(39.81);
-  const [zoomSetting, setZoomSetting] = useState(1);
+  const [zoomSetting, setZoomSetting] = useState(3);
   const [cMarker, setcMarker] = useState(null);
   let isAtStart = true;
 
@@ -27,7 +26,7 @@ export default function MapContainer() {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/sablr/cljuoyyko006x01occbim6b2i',
+      style: 'mapbox://styles/sablr/clk303ytw005201pqgq2faum0',
       center: [lng, lat],
       zoom: zoomSetting,
     });
@@ -35,7 +34,7 @@ export default function MapContainer() {
     const nav = new mapboxgl.NavigationControl({
       visualizePitch: true,
     });
-    map.current.addControl(nav, 'bottom-left');
+    map.current.addControl(nav, 'bottom-right');
   });
 
   // For the sake of sanity, do something to clear this out or make it shorter.
@@ -64,7 +63,7 @@ export default function MapContainer() {
     if (!map.current) return; // wait for map to initialize
 
     const marker = new mapboxgl.Marker({
-      color: '#FFFFFF',
+      color: '#000',
       draggable: false,
     })
       .setLngLat([newLng, newLat])
@@ -85,9 +84,7 @@ export default function MapContainer() {
     <>
       <div>
         <div ref={mapContainer} className='map-container' />
-        {!isLoading && (
-          <QuakeTable qdata={quakes.features} updateMap={updateMap} />
-        )}
+        <QuakeTable updateMap={updateMap} />
       </div>
     </>
   );
