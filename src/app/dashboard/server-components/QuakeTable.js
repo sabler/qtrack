@@ -1,4 +1,5 @@
 import { renderDate, friendlyNumbers, isItStriped } from '../utils/utils';
+
 import useUSGS from '@/app/hooks/useUSGS';
 
 export default function QuakeTable({ updateMap }) {
