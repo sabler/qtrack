@@ -1,9 +1,7 @@
-'use client';
-
-import { renderDate, friendlyCoords, isItStriped } from '../utils/utils';
+import { renderDate, friendlyNumbers, isItStriped } from '../utils/utils';
 import useUSGS from '@/app/hooks/useUSGS';
 
-export default function QuakeTable({ qdata, updateMap }) {
+export default function QuakeTable({ updateMap }) {
   const { quakes, isLoading, isError } = useUSGS();
 
   let quakeData = [];
@@ -15,11 +13,22 @@ export default function QuakeTable({ qdata, updateMap }) {
 
   const renderQuakes = quakeData.map((quake) => {
     let date = renderDate(quake.properties.updated).toUTCString();
-    let friendlyLong = friendlyCoords(quake.geometry.coordinates[0]);
-    let friendlyLat = friendlyCoords(quake.geometry.coordinates[1]);
+    let friendlyLong = friendlyNumbers(quake.geometry.coordinates[0]);
+    let friendlyLat = friendlyNumbers(quake.geometry.coordinates[1]);
+    let friendlyMag = friendlyNumbers(quake.properties.mag, 2);
     return (
-      <tr key={quake.id} scope='row' className={`cursor-pointer`}>
-        <th className='text-left py-2 px-8'>{quake.properties.mag}</th>
+      <tr
+        onClick={() =>
+          updateMap(
+            quake.geometry.coordinates[0],
+            quake.geometry.coordinates[1]
+          )
+        }
+        key={quake.id}
+        scope='row'
+        className={`hover:bg-cyan-100 cursor-pointer`}
+      >
+        <th className='text-left py-2 px-8'>{friendlyMag}</th>
         <td className='text-left py-2 px-8'>{quake.properties.place}</td>
         <td className='text-left py-2 px-8'>
           {friendlyLong}, {friendlyLat}
@@ -30,8 +39,8 @@ export default function QuakeTable({ qdata, updateMap }) {
   });
 
   return (
-    <div className='absolute bottom-[10px] hover:bottom-[10px] left-[10px] min-h-fit h-1/4 w-3/5 backdrop-blur-sm bg-slate-200/25 overflow-y-auto rounded'>
-      <table className='w-full'>
+    <div className='absolute bottom-[40px] left-[10px] min-h-96 max-h-96 w-max backdrop-blur-sm bg-slate-200/25 overflow-y-auto rounded'>
+      <table>
         <thead className='sticky top-0 bg-white text-xs'>
           <tr>
             <th className='text-left px-8 p-2' scope='col'>

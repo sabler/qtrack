@@ -7,7 +7,6 @@ export default function Dashboard() {
     <div className='container relative font-sys max-w-full'>
       {/* Some kind of context will go here. Maybe. */}
       <MapContainer />
-      <QuakeTable />
       <Masthead />
     </div>
   );

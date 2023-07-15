@@ -7,8 +7,8 @@ export const isItStriped = (index) => {
   return calculation;
 };
 
-export const friendlyCoords = (point) => {
-  return Number.parseFloat(point).toFixed(3);
+export const friendlyNumbers = (point, afterDecimal = 3) => {
+  return Number.parseFloat(point).toFixed(afterDecimal);
 };
 
 export const updateMap = () => {
